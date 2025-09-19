@@ -1,8 +1,8 @@
-## Grafo_Silksong
+# Grafo_Silksong
 Mapa de 'Hollow Knight: Silksong' modelado em Grafos. Algoritmo de dijkstra aplicado para encontrar o menor caminho de uma área para outra
 
-## Modelagem
-# Contexto
+# Modelagem
+## Contexto
 - Jogador que já completou o jogo (ou seja, tem tudo desbloqueado) e quer se aventurar nas terras de fiarlongo sem utilizar nenhum fast-travel
 
 
