@@ -143,11 +143,16 @@ class Grafo:
     
     def printar(self, origem: str, destino: Optional[str] = None):
         if(destino is None):
-            
-            dist = self.dijkstra(origem)[0]
-            for local in dist:
-                print(f'Destino: {local} \nDistância:', round(dist[local], 2))
+            print(f'Saindo de: {origem}')
+            cont = 0
+            distn = self.dijkstra(origem)[0]
+            print("DEBUG nomes:", self._nomes)
+            print("DEBUG dist_map:", distn)
+
+            for local in distn:
+                print(f'Destino {cont}: {local} \nDistância:', round(distn[local], 2))
                 print('---------------------------------')
+                cont += 1
             
         else:
             dist, caminho = self.dijkstra(origem, destino)
@@ -156,14 +161,15 @@ class Grafo:
         for i in caminho:
             print(f'Conexão {cont}: {i}')
             cont += 1
-
-mapa = Grafo(['O ABISMO', 'NINHO DE TECELA ATLA','DOCAS PROFUNDAS', 'A MEDULA', 'GRUTA MUSGOSA', 
+arestas = ['O ABISMO', 'NINHO DE TECELA ATLA','DOCAS PROFUNDAS', 'A MEDULA', 'GRUTA MUSGOSA', 
              'COVIL DOS VERMES', 'TRILHA DE SKARR', 'CAMPOS LONGINQUOS', 
-             'VERDANIA', 'PANTANO CINZENTO', 'CAMPANULA', 'CASCOMADEIRA',
+             'VERDANIA', 'PANTANO CINZENTO', 'CAMPANULA', 'CASCOMADEIRA', 'CAMINHO DOS PECADORES',
              'DEGRAUS DEVASTADOS', 'AREIAS DE KARAK', 'CLAUSTROFORJAS',
              'SPA DA CIDADELA', 'ESTAÇAO VIA CAMPANARIA', 'ALA BRANCA','BOSQUE DOS LUMES', 
-             'CAMARAS SUSSURRANTES', 'BILEBREJO', 'ROCHEDO', 'MONTE PLUMIDIO'
-             'SALOES SUPREMOS', 'MEMORIUM', 'CANAIS PESTILENTOS', 'O BERÇO'])
+             'CAMARAS SUSSURRANTES', 'BILEBREJO', 'O ROCHEDO', 'MONTE PLUMIDIO',
+             'SALOES SUPREMOS', 'MEMORIUM', 'CANAIS PESTILENTOS', 'O BERÇO']   
+arestas.sort()
+mapa = Grafo(arestas)
 
 mapa.adicionar_aresta_dupla('O ABISMO', 'DOCAS PROFUNDAS', 8.1, 8.1)
 mapa.adicionar_aresta_dupla('NINHO DE TECELA ATLA', 'GRUTA MUSGOSA', 2.8, 2.8)
@@ -196,15 +202,14 @@ mapa.adicionar_aresta_dupla('DEGRAUS DEVASTADOS','AREIAS DE KARAK', 3.3, 3.3)
 mapa.adicionar_aresta_dupla('DEGRAUS DEVASTADOS', 'SPA DA CIDADELA', 5.1, 5.1)
 mapa.adicionar_aresta_dupla('CANAIS PESTILENTOS', 'MEMORIUM', 4.0, 4.0)
 mapa.adicionar_aresta_dupla('CANAIS PESTILENTOS', 'BILEBREJO', 2.1, 2.1)
-mapa.adicionar_aresta_dupla('ALA BRANCA', 'CLAUSTROFORJAS', 3.3, 3.3)
-mapa.adicionar_aresta('ALA BRANCA', 'CLAUSTROFORJAS', 3.0)
+mapa.adicionar_aresta_dupla('ALA BRANCA', 'CLAUSTROFORJAS', 3.0, 3.3)
 mapa.adicionar_aresta_dupla('ESTAÇAO VIA CAMPANARIA', 'ALA BRANCA', 3.5, 3.5)
 mapa.adicionar_aresta_dupla('ESTAÇAO VIA CAMPANARIA', 'CAMARAS SUSSURRANTES', 3.8, 3.8)
-mapa.adicionar_aresta_dupla('ESTAÇAO VIA CAMPANARIA', 'CLAUSTROFOJAS', 4.4, 4.4)
+mapa.adicionar_aresta_dupla('ESTAÇAO VIA CAMPANARIA', 'CLAUSTROFORJAS', 4.4, 4.4)
 mapa.adicionar_aresta_dupla('ESTAÇAO VIA CAMPANARIA', 'CAMINHO DOS PECADORES', 5.5, 5.5)
 mapa.adicionar_aresta_dupla('BILEBREJO', 'CAMARAS SUSSURRANTES', 9.2, 9.2)
 mapa.adicionar_aresta_dupla('DEGRAUS DEVASTADOS', 'CLAUSTROFORJAS', 7.9, 7.9)
 mapa.adicionar_aresta_dupla('CLAUSTROFORJAS', 'BOSQUE DOS LUMES', 4.0, 4.0)
 mapa.adicionar_aresta_dupla('CAMPANULA', 'A MEDULA', 3.0, 3.0)
 
-mapa.printar('GRUTA MUSGOSA', None)
+mapa.printar('GRUTA MUSGOSA', 'CAMINHO DOS PECADORES')
