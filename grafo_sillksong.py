@@ -2,22 +2,6 @@ import math
 from typing import Dict, List, Optional, Iterable, Tuple
 
 class Grafo:
-    """
-    Grafo dirigido e ponderado baseado em matriz de adjacência.
-    - Vértices sAo strings (mapeados internamente para Indices 0..n-1).
-    - Pesos devem ser >= 0 (Dijkstra).
-    - Ausência de aresta = math.inf. Diagonal = 0.
-    - Pode ser criado jA com uma quantidade de vértices: v0, v1, ..., v{n-1}.
-
-    Métodos principais:
-      - adicionar_vertice(nome)
-      - adicionar_aresta(u, v, peso)
-      - remover_aresta(u, v)
-      - obter_peso(u, v) -> float
-      - dijkstra(origem, destino=None) -> (dist, anterior) ou (custo, caminho)
-      - vertices() -> lista com nomes dos vértices
-    """
-
     def __init__(self, nomes: Optional[Iterable[str]] = None,
                  quantidade: Optional[int] = None, prefixo: str = "v"):
         self._idx: Dict[str, int] = {}
@@ -31,22 +15,20 @@ class Grafo:
             for i in range(int(quantidade)):
                 self.adicionar_vertice(f"{prefixo}{i}")
 
-    # ---------- utilidades de vértices ----------
     def vertices(self) -> List[str]:
-        """Retorna a lista de nomes dos vértices na ordem interna."""
         return list(self._nomes)
 
     def adicionar_vertice(self, nome: str) -> None:
-        """Adiciona um vértice (string) se ainda nAo existir; expande a matriz."""
+        
         if nome in self._idx:
             return
         i = len(self._nomes)
         self._idx[nome] = i
         self._nomes.append(nome)
-        # Expande linhas existentes
+       
         for linha in self._mat:
             linha.append(math.inf)
-        # Adiciona nova linha
+      
         nova = [math.inf] * (i + 1)
         nova[i] = 0.0
         self._mat.append(nova)
@@ -56,7 +38,7 @@ class Grafo:
             self.adicionar_vertice(nome)
         return self._idx[nome]
 
-    # ---------- arestas ----------
+
     def adicionar_aresta(self, u: str, v: str, peso: float) -> None:
         """Adiciona/atualiza aresta dirigida u -> v com peso >= 0."""
         if peso < 0:
@@ -160,9 +142,20 @@ class Grafo:
         return dist[self._idx[destino]], caminho
     
     def printar(self, origem: str, destino: Optional[str] = None):
-        dist, caminho = self.dijkstra(origem, destino)
-        print(round(dist, 2))
-        print(caminho)
+        if(destino is None):
+            
+            dist = self.dijkstra(origem)[0]
+            for local in dist:
+                print(f'Destino: {local} \nDistância:', round(dist[local], 2))
+                print('---------------------------------')
+            
+        else:
+            dist, caminho = self.dijkstra(origem, destino)
+        print(f'Distância:', round(dist, 2))
+        cont = 0
+        for i in caminho:
+            print(f'Conexão {cont}: {i}')
+            cont += 1
 
 mapa = Grafo(['O ABISMO', 'NINHO DE TECELA ATLA','DOCAS PROFUNDAS', 'A MEDULA', 'GRUTA MUSGOSA', 
              'COVIL DOS VERMES', 'TRILHA DE SKARR', 'CAMPOS LONGINQUOS', 
@@ -214,4 +207,4 @@ mapa.adicionar_aresta_dupla('DEGRAUS DEVASTADOS', 'CLAUSTROFORJAS', 7.9, 7.9)
 mapa.adicionar_aresta_dupla('CLAUSTROFORJAS', 'BOSQUE DOS LUMES', 4.0, 4.0)
 mapa.adicionar_aresta_dupla('CAMPANULA', 'A MEDULA', 3.0, 3.0)
 
-mapa.printar('GRUTA MUSGOSA', 'DEGRAUS DEVASTADOS')
+mapa.printar('GRUTA MUSGOSA', None)
