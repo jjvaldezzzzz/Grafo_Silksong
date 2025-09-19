@@ -146,8 +146,6 @@ class Grafo:
             print(f'Saindo de: {origem}')
             cont = 0
             distn = self.dijkstra(origem)[0]
-            print("DEBUG nomes:", self._nomes)
-            print("DEBUG dist_map:", distn)
 
             for local in distn:
                 print(f'Destino {cont}: {local} \nDistância:', round(distn[local], 2))
@@ -161,15 +159,15 @@ class Grafo:
         for i in caminho:
             print(f'Conexão {cont}: {i}')
             cont += 1
-arestas = ['O ABISMO', 'NINHO DE TECELA ATLA','DOCAS PROFUNDAS', 'A MEDULA', 'GRUTA MUSGOSA', 
+vértices = ['O ABISMO', 'NINHO DE TECELA ATLA','DOCAS PROFUNDAS', 'A MEDULA', 'GRUTA MUSGOSA', 
              'COVIL DOS VERMES', 'TRILHA DE SKARR', 'CAMPOS LONGINQUOS', 
              'VERDANIA', 'PANTANO CINZENTO', 'CAMPANULA', 'CASCOMADEIRA', 'CAMINHO DOS PECADORES',
              'DEGRAUS DEVASTADOS', 'AREIAS DE KARAK', 'CLAUSTROFORJAS',
              'SPA DA CIDADELA', 'ESTAÇAO VIA CAMPANARIA', 'ALA BRANCA','BOSQUE DOS LUMES', 
              'CAMARAS SUSSURRANTES', 'BILEBREJO', 'O ROCHEDO', 'MONTE PLUMIDIO',
              'SALOES SUPREMOS', 'MEMORIUM', 'CANAIS PESTILENTOS', 'O BERÇO']   
-arestas.sort()
-mapa = Grafo(arestas)
+vértices.sort()
+mapa = Grafo(vértices)
 
 mapa.adicionar_aresta_dupla('O ABISMO', 'DOCAS PROFUNDAS', 8.1, 8.1)
 mapa.adicionar_aresta_dupla('NINHO DE TECELA ATLA', 'GRUTA MUSGOSA', 2.8, 2.8)
@@ -212,4 +210,4 @@ mapa.adicionar_aresta_dupla('DEGRAUS DEVASTADOS', 'CLAUSTROFORJAS', 7.9, 7.9)
 mapa.adicionar_aresta_dupla('CLAUSTROFORJAS', 'BOSQUE DOS LUMES', 4.0, 4.0)
 mapa.adicionar_aresta_dupla('CAMPANULA', 'A MEDULA', 3.0, 3.0)
 
-mapa.printar('GRUTA MUSGOSA', 'CAMINHO DOS PECADORES')
+mapa.printar('GRUTA MUSGOSA')
