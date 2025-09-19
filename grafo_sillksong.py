@@ -40,7 +40,7 @@ class Grafo:
 
 
     def adicionar_aresta(self, u: str, v: str, peso: float) -> None:
-        """Adiciona/atualiza aresta dirigida u -> v com peso >= 0."""
+     
         if peso < 0:
             raise ValueError("Dijkstra requer pesos nAo negativos.")
         ui = self._garantir_vertice(u)
@@ -48,18 +48,17 @@ class Grafo:
         self._mat[ui][vi] = float(peso)
 
     def remover_aresta(self, u: str, v: str) -> None:
-        """Remove a aresta u -> v (define como math.inf)."""
+     
         if u in self._idx and v in self._idx:
             self._mat[self._idx[u]][self._idx[v]] = math.inf
 
     def obter_peso(self, u: str, v: str) -> float:
-        """Retorna o peso de u -> v (math.inf se nAo existir)."""
         if u not in self._idx or v not in self._idx:
             return math.inf
         return self._mat[self._idx[u]][self._idx[v]]
     
     def adicionar_aresta_dupla(self, a: str, b: str, peso_ida: float, peso_volta: Optional[float] = None) -> None:
-        """Atalho para adicionar arestas nos dois sentidos entre a e b."""
+        
         if peso_volta is None:
             peso_volta = peso_ida
         self.adicionar_aresta(a, b, peso_ida)
