@@ -1,26 +1,44 @@
 # Grafo_Silksong
-Mapa de 'Hollow Knight: Silksong' modelado em Grafos.
-Algoritmo de dijkstra aplicado para encontrar o menor caminho de uma área para outra
+Modelagem do mapa de *Hollow Knight: Silksong* usando Grafos e algoritmos clássicos de caminhamento.
+
 ---
+
 ## Contexto
-- Jogador que **já completou o jogo** (ou seja, tem tudo desbloqueado) e quer se aventurar nas terras de fiarlongo sem utilizar nenhum fast-travel
+Projeto voltado para jogadores que já possuem acesso total ao mapa e desejam explorar rotas sem fast-travel, analisando caminhos e conexões entre áreas usando algoritmos de grafos.
+
 ---
-# Modelagem
-- Escolhemos um banco (local onde o você salva o progresso do jogo) principal de **cada área do mapa** para representá-los como **vértices** no nosso modelo
-- A partir disso colocamos o mapa em um grid e traçamos as arestas entre bancos que possuem conexão direta
-- O peso foi calculado com base na distância entre os vértices passando pelo desenho do mapa(considerando o jogador que tem tudo desbloqueado)
+
+## Modelagem
+- Cada área do mapa é um **vértice**.
+- Conexões diretas entre áreas viram **arestas**, podendo ser unidirecionais ou bidirecionais.
+- Pesos representam distâncias aproximadas no mapa.
+- Matriz de adjacência usada como estrutura base.
+
 ---
-## Aviso: 
-- O código fonte contém spoilers(nome de todas as áreas do jogo) 
+
+## Aviso
+O código contém **spoilers** dos nomes das áreas do jogo.
+
 ---
 
 ## 🚀 Funcionalidades
 
-- Estrutura de grafo usando **lista de adjacência** (vértices representados por `str`).
-- Adição de vértices e arestas (incluindo arestas nos dois sentidos).
-- Implementação do algoritmo de **Dijkstra**:
-  - Retorna distância mínima de um vértice origem para todos os outros
-  - Ou retorna o custo e caminho completo até um vértice destino específico.
-- Utilize a função **printar()** com um ou dois parâmetroa para observar o funcionamento dos casos acima respectivamente
---- 
+### Algoritmos Implementados
+- **Dijkstra** (detecta pesos negativos e interrompe)
+- **Bellman-Ford** (suporta pesos negativos)
+- **BFS** – menor número de passos
+- **DFS** – exploração profunda
 
+### Operações do Grafo
+- Adição automática de vértices
+- Arestas simples e duplas
+- Impressão de caminhos e distâncias
+
+---
+
+## ▶️ Como Executar
+
+1. Baixe o projeto:
+```bash
+git clone https://github.com/SEU_USUARIO/Grafo_Silksong.git
+cd Grafo_Silksong
