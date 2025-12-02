@@ -42,3 +42,8 @@ O código contém **spoilers** dos nomes das áreas do jogo.
 ```bash
 git clone https://github.com/SEU_USUARIO/Grafo_Silksong.git
 cd Grafo_Silksong
+```
+2. Execute o arquivo principal:
+```bash
+python3 mapa.py
+```
