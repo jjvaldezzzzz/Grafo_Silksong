@@ -40,7 +40,7 @@ O código contém **spoilers** dos nomes das áreas do jogo.
 
 1. Baixe o projeto:
 ```bash
-git clone https://github.com/SEU_USUARIO/Grafo_Silksong.git
+git clone https://github.com/jjvaldezzzzz/Grafo_Silksong.git
 cd Grafo_Silksong
 ```
 2. Execute o arquivo principal:
