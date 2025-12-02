@@ -4,7 +4,7 @@ Modelagem do mapa de *Hollow Knight: Silksong* usando Grafos e algoritmos cláss
 ---
 
 ## Contexto
-Projeto voltado para jogadores que já possuem acesso total ao mapa e desejam explorar rotas sem fast-travel, analisando caminhos e conexões entre áreas usando algoritmos de grafos.
+Projeto voltado para jogadores que já possuem acesso total ao mapa e desejam explorar rotas sem utilizar o fast-travel do jogo, analisando caminhos e conexões entre áreas usando algoritmos de grafos.
 
 ---
 
@@ -45,5 +45,5 @@ cd Grafo_Silksong
 ```
 2. Execute o arquivo principal:
 ```bash
-python3 mapa.py
+python3 grafo_silksong.py
 ```
